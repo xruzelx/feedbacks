@@ -1,0 +1,12 @@
+<div class="container mb-5">
+  <div class="auth">
+    <div class="auth__switcher">
+      <a (click)="changeTab('login')" [class.active]="currentTab == 'login'">Вход</a>
+      <a (click)="changeTab('register')" [class.active]="currentTab == 'register'">Регистрация</a>
+    </div>
+    <div class="auth__container">
+      <app-login-form *ngIf="currentTab == 'login'"></app-login-form>
+      <app-register-form *ngIf="currentTab == 'register'"></app-register-form>
+    </div>
+  </div>
+</div>

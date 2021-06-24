@@ -1,0 +1,10 @@
+form {
+    display: flex;
+    flex-direction: column;
+    .error {
+        padding: 10px 20px;
+        background-color: #ffb6b6;
+        border-radius: 4px;
+        text-align: center;
+    }
+}

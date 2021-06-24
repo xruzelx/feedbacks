@@ -1,0 +1,18 @@
+<form [formGroup]="registerForm">
+  <div class="form-group mb-3">
+    <label>Email address</label>
+    <input type="email" formControlName="email" class="form-control">
+    <span *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched"
+                style="color: #D62E1E">Неверный формат E-mail</span>
+  </div>
+  <div class="form-group mb-3">
+    <label>Password</label>
+    <input type="password" class="form-control" formControlName="password">
+    <span *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched"
+                style="color: #D62E1E">Минимальная длина 6 символов</span>
+  </div>
+  <div *ngIf="iserrorMessage" class="error mb-3">
+    {{errorMessage}}
+  </div>
+  <button type="submit" (click)="tryRegister()" class="btn btn-primary">Регистрация</button>
+</form>

@@ -1,0 +1,42 @@
+<div class="container pb-5">
+    <div class="feedback-form">
+        <p>Форма обратной связи</p>
+        <form [formGroup]="feedbackForm">
+            <div class="form-group mb-3">
+                <label>Email</label>
+                <input type="email" formControlName="email" class="form-control">
+                <span *ngIf="feedbackForm.controls['email'].invalid && feedbackForm.controls['email'].touched"
+                            style="color: #D62E1E">Неверный формат E-mail</span>
+            </div>
+            <div class="form-group mb-3">
+                <label>Телефон</label>
+                <input phoneMask maxlength="18" type="tel" class="form-control" formControlName="phone">
+                <span *ngIf="feedbackForm.controls['phone'].invalid && feedbackForm.controls['phone'].touched"
+                            style="color: #D62E1E">Неверный номер телефона</span>
+            </div>
+            <div class="form-group mb-3">
+                <label>Имя</label>
+                <input type="text" class="form-control" formControlName="name">
+                <span *ngIf="feedbackForm.controls['name'].invalid && feedbackForm.controls['name'].touched"
+                            style="color: #D62E1E">Поле не должно быть пустым</span>
+            </div>
+            <div *ngIf="iserrorMessage" class="error mb-3">
+                {{errorMessage}}
+            </div>
+            <div *ngIf="isSuccessMessage" class="success mb-3">
+                {{successMessage}}
+            </div>
+            <button type="submit" (click)="trySendForm()" class="btn btn-primary">Отправить</button>
+        </form>
+    </div>
+    <div *ngIf="isAuthorized" class="mt-4">
+        <h4 class="mb-3">Список заявок</h4>
+        <div *ngFor="let feedback of feedbacks" class="feedback">
+            <div class="feedback__contacts">
+                <a *ngIf="feedback.email" href="mailto:{{feedback.email}}">{{feedback.email}}</a>
+                <a *ngIf="feedback.phone" href="tel:{{feedback.phone}}">{{feedback.phone}}</a>
+            </div>
+            <span *ngIf="feedback.name">{{feedback.name}}</span>
+        </div>
+    </div>
+</div>

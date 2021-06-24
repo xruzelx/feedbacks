@@ -1,0 +1,19 @@
+.header {
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 15px;
+    a {
+        font-weight: 800;
+        font-size: 22px;
+        text-decoration: none;
+        cursor: pointer;
+        color: #000;
+    }
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
